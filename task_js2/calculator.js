@@ -25,9 +25,16 @@ function buttonClick(event) {
     } 
   }
   
-  else if (result.textContent === "0" && result.textContent !== "." || result.textContent === "00" && text !== ".") {
+  else if (result.textContent === "0" && text !== "." || result.textContent === "00" && text !== ".") {
     calcText += text;
     calcText = event.target.textContent;
+  }
+  
+  else if (text === "00") {
+    calcText += text;
+    if (result.textContent == "") {
+      calcText = "0";
+    }
   }
   
   else {
