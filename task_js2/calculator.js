@@ -25,9 +25,10 @@ function buttonClick(event) {
     } 
   }
   
-  else if (result.textContent === "0" && text !== "." || result.textContent === "00" && text !== ".") {
+  else if (result.textContent.slice(-1) === "0" && text !== "." || result.textContent.slice(-1) === "00" && text !== ".") {
+    let str = result.textContent.slice(0, -1);
     calcText += text;
-    calcText = event.target.textContent;
+    calcText = str + event.target.textContent;
   }
   
   else if (text === "00") {
@@ -35,6 +36,10 @@ function buttonClick(event) {
     if (result.textContent == "") {
       calcText = "0";
     }
+    if (result.textContent.slice(-1) === "+" || result.textContent.slice(-1) === "-" || result.textContent.slice(-1) === "*" || result.textContent.slice(-1) === "/") {
+      let str = event.target.textContent.slice(0, -1);
+      calcText = result.textContent + str;
+    } 
   }
   
   else {
