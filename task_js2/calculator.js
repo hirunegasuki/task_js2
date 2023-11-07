@@ -42,6 +42,14 @@ function buttonClick(event) {
     } 
   }
   
+  else if (text === ".") {
+    calcText += text;
+    if (result.textContent.slice(-1) === "."){
+      let str = result.textContent.slice(0, -1);
+      calcText = str + event.target.textContent;
+    }
+  }
+  
   else {
     calcText += text;
   }
