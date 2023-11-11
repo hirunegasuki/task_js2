@@ -5,6 +5,15 @@ let calcText = "";
 
 function buttonClick(event) {
   const text = event.target.textContent;
+  
+  const symbolMark = result.textContent;
+  const plusClick = symbolMark.substr(symbolMark.indexOf("+") + 1);
+  const minusClick = symbolMark.substr(symbolMark.indexOf("-") + 1);
+  const multipliedClick = symbolMark.substr(symbolMark.indexOf("*") + 1);
+  const dividedClick = symbolMark.substr(symbolMark.indexOf("/") + 1);
+
+  //const symbolClick = symbolMark.substr(symbolMark.indexOf("+") + 1);
+
 
   if (text === "=") {
     calcText = eval(calcText);
@@ -20,18 +29,38 @@ function buttonClick(event) {
       let str = result.textContent.slice(0, -1);
       calcText = str + event.target.textContent;
     } 
-    else {
-      result.textContent += event.target.textContent;
-    } 
   }
   
-  else if (result.textContent.slice(-1) === "0" && text !== "." || result.textContent.slice(-1) === "00" && text !== ".") {
-    let str = result.textContent.slice(0, -1);
+ /*
+  else if (symbolClick === "0" && text !== "."){
     calcText += text;
+    let str = result.textContent.slice(0, -1);
     calcText = str + event.target.textContent;
-  }
-  
-  else if (text === "00") {
+ }
+ */
+
+  else if (plusClick === "0" && text !== "."){
+    calcText += text;
+    let str = result.textContent.slice(0, -1);
+    calcText = str + event.target.textContent;
+ }
+  else if (minusClick === "0" && text !== "."){
+    calcText += text;
+    let str = result.textContent.slice(0, -1);
+    calcText = str + event.target.textContent;
+ }
+  else if (multipliedClick === "0" && text !== "."){
+    calcText += text;
+    let str = result.textContent.slice(0, -1);
+    calcText = str + event.target.textContent;
+ }
+  else if (dividedClick === "0" && text !== "."){
+    calcText += text;
+    let str = result.textContent.slice(0, -1);
+    calcText = str + event.target.textContent;
+ }
+
+ else if (text === "00") {
     calcText += text;
     if (result.textContent == "") {
       calcText = "0";
@@ -47,6 +76,10 @@ function buttonClick(event) {
     if (result.textContent.slice(-1) === "."){
       let str = result.textContent.slice(0, -1);
       calcText = str + event.target.textContent;
+    }
+    if (result.textContent.slice(-1) === "+" || result.textContent.slice(-1) === "-" || result.textContent.slice(-1) === "*" || result.textContent.slice(-1) === "/") {
+      let str = event.target.textContent.slice(0, -1);
+      calcText = result.textContent + str;
     }
   }
   
